@@ -1,0 +1,45 @@
+html{
+	height:100%;
+}
+body{
+	height:100%;
+	margin:0px;
+	font-weight:300;
+	font-family: 'Alegreya Sans SC', sans-serif;
+}
+.video-wrapper{
+	height:100%;
+	background-color:#000;
+	-webkit-filter: brightness(60%);
+	filter: brightness(60%);
+}
+.body-text{
+	margin-top:10%;
+	text-align:center;
+	position:relative;
+	color:white;
+	bottom:100%;
+}
+#bgvid{
+	z-index:-1;
+	position:fixed;
+	width:100%;
+	height: auto;
+	margin:0px;
+}
+.form-control{
+	margin:0 auto;
+	width:400px !important;
+	border-radius:0 !important;
+	text-align:center;
+	margin-top:-20px;
+}
+.btn-default{
+	border-radius: 0px !important;
+}
+.alert-danger{
+	width:400px !important;
+	margin:0 auto;
+	margin-bottom:20px !important;
+	border-radius:0px !important;
+}

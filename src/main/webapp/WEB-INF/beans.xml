@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:context="http://www.springframework.org/schema/context"
+	xmlns:tx="http://www.springframework.org/schema/tx"
+	xmlns:mvc="http://www.springframework.org/schema/mvc"
+	xmlns:aop="http://www.springframework.org/schema/aop"
+	xmlns:jpa="http://www.springframework.org/schema/data/jpa"
+	xsi:schemaLocation="http://www.springframework.org/schema/security http://www.springframework.org/schema/security/spring-security-4.1.xsd
+ 		http://www.springframework.org/schema/mvc http://www.springframework.org/schema/mvc/spring-mvc-4.2.xsd
+ 		http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+ 		http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-4.2.xsd
+ 		http://www.springframework.org/schema/data/jpa http://www.springframework.org/schema/data/jpa/spring-jpa-1.8.xsd
+ 		http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop-4.2.xsd
+ 		http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx-4.2.xsd">
+
+<!--   Enable annotations for Spring MVC -->
+  <mvc:annotation-driven/>
+
+<!--   Search for spring beans -->
+  <context:component-scan base-package="com.tms"/>      
+  
+<!-- Enable urls for static content (css, js, etc.)   -->
+  <mvc:resources mapping="/resources/**" location="/resources/" />
+
+ <!-- 	Define DataSource -->
+ 	<bean id="mydataSource" class="org.springframework.jndi.JndiObjectFactoryBean">
+ 		<property name="jndiName" value="java:comp/env/jdbc/PostgreSQLDS"/>
+ 	</bean>
+    
+<!--     Because we use Hibernate -->
+    <bean id="hibernateJpaVendorAdapter" class="org.springframework.orm.jpa.vendor.HibernateJpaVendorAdapter"></bean>
+    
+<!-- 	Enable @Transactional annotation	 -->
+	<tx:annotation-driven/>
+
+<!--     Because Spring Data doesn't natively support Hibernate (But it does support JPA) -->
+    <bean id="entityManagerFactory"  class="org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean">  
+        <property name="dataSource" ref="mydataSource"/>  
+        <property name="packagesToScan" value="com.tms.domain"/>
+		<property name="jpaVendorAdapter" ref="hibernateJpaVendorAdapter"/>
+		<property name="jpaProperties">
+				<props>
+					<prop key="hibernate.dialect">org.hibernate.dialect.PostgreSQL82Dialect</prop>
+					<prop key="hibernate.show_sql">true</prop>
+					<prop key="hibernate.format_sql">false</prop>
+					
+					<!-- dont use this forreals -->
+					<!-- <prop key="hibernate.hbm2ddl.auto">create</prop>-->
+				</props>
+		</property>
+    </bean>  
+      
+<!--     Because tx are cool -->
+    <bean id="transactionManager" class="org.springframework.orm.jpa.JpaTransactionManager">  
+    	<property name="entityManagerFactory" ref="entityManagerFactory"/>  
+    </bean>
+
+<!--   Find JPA Repositories -->
+<jpa:repositories base-package="com.tms"/>
+
+
+<!-- Apache Tiles -->
+<bean id="viewResolver" class="org.springframework.web.servlet.view.tiles3.TilesViewResolver"/>
+<bean id="tilesConfigurer" class="org.springframework.web.servlet.view.tiles3.TilesConfigurer">
+<property name="definitions">
+<list>
+<value>/WEB-INF/tile-defs/definitions.xml</value>
+</list>
+</property>
+</bean>
+
+<!--   Enable AOP -->
+  <aop:aspectj-autoproxy/>
+
+</beans>
