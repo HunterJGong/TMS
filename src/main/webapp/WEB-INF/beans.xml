@@ -14,28 +14,23 @@
  		http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop-4.2.xsd
  		http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx-4.2.xsd">
 
-<!--   Enable annotations for Spring MVC -->
   <mvc:annotation-driven/>
 
-<!--   Search for spring beans -->
   <context:component-scan base-package="com.tms"/>      
   
-<!-- Enable urls for static content (css, js, etc.)   -->
   <mvc:resources mapping="/resources/**" location="/resources/" />
 
- <!-- 	Define DataSource -->
  	<bean id="mydataSource" class="org.springframework.jndi.JndiObjectFactoryBean">
  		<property name="jndiName" value="java:comp/env/jdbc/PostgreSQLDS"/>
  	</bean>
     
-<!--     Because we use Hibernate -->
-    <bean id="hibernateJpaVendorAdapter" class="org.springframework.orm.jpa.vendor.HibernateJpaVendorAdapter"></bean>
+    <bean id="hibernateJpaVendorAdapter" 
+    		class="org.springframework.orm.jpa.vendor.HibernateJpaVendorAdapter"></bean>
     
-<!-- 	Enable @Transactional annotation	 -->
 	<tx:annotation-driven/>
 
-<!--     Because Spring Data doesn't natively support Hibernate (But it does support JPA) -->
-    <bean id="entityManagerFactory"  class="org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean">  
+    <bean id="entityManagerFactory"  
+    		class="org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean">  
         <property name="dataSource" ref="mydataSource"/>  
         <property name="packagesToScan" value="com.tms.domain"/>
 		<property name="jpaVendorAdapter" ref="hibernateJpaVendorAdapter"/>
@@ -46,15 +41,15 @@
 					<prop key="hibernate.format_sql">false</prop>
 					
 					<!-- dont use this forreals -->
-					<!-- <prop key="hibernate.hbm2ddl.auto">create</prop>-->
+					<prop key="hibernate.hbm2ddl.auto">create</prop>
 				</props>
 		</property>
     </bean>  
-      
-<!--     Because tx are cool -->
+
     <bean id="transactionManager" class="org.springframework.orm.jpa.JpaTransactionManager">  
     	<property name="entityManagerFactory" ref="entityManagerFactory"/>  
     </bean>
+
 
 <!--   Find JPA Repositories -->
 <jpa:repositories base-package="com.tms"/>

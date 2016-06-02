@@ -11,7 +11,7 @@
 
 <c:if test="${user.role.id==2}">
 	<div class="task-box">
-		<form action="/TMS/manager/sprint/createStory" method="POST">
+		<form action="/app/manager/sprint/createStory" method="POST">
 			<label>Submit a New Story</label>
 			<c:forEach items="${errors}" var="error">
 				<br/><span class="err-msg">${error}</span>

@@ -24,13 +24,13 @@
 		</c:forEach>
 	</h3>
 	<div class="task-box">
-		<form action="/TMS/manager/project/createSprint" method="POST">
+		<form action="manager/project/createSprint" method="POST">
 			<label>Create a New Sprint</label>
 			<input type="submit" class="btn btn-default task-submit"/>
 		</form>
 	</div>
 	<div class="task-box">
-		<form action="/TMS/manager/project/assignDeveloper" method="POST">
+		<form action="manager/project/assignDeveloper" method="POST">
 			<label>Assign a Developer</label>
 			<select name="dev">
 				<c:forEach items="${devs}" var="bob">

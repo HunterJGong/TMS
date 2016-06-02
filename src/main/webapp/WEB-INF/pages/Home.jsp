@@ -20,7 +20,7 @@
 
 <c:if test="${user.role.id==2}">
 	<div class="task-box">
-		<form action="/TMS/manager/createProject" method="POST">
+		<form action="/app/manager/createProject" method="POST">
 			<label>Submit a New Project</label>
 			<c:forEach items="${errors}" var="error">
 				<br/><span class="err-msg">${error}</span>

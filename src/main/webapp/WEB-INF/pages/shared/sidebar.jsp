@@ -3,9 +3,9 @@
 	<img src="${user.image}" id="editUser" class="btn-sidebar"/>
 	<br/>
 	<c:if test="${user.role.id==2}">
-		<img src="/TMS/resources/img/plus-empty.png" id="newUser" class="btn-sidebar">
+		<img src="/app/resources/img/plus-empty.png" id="newUser" class="btn-sidebar">
 	</c:if>
-	<div id="logout"><a href="/TMS/logout"><img src="/TMS/resources/img/logout-icon.png" width="50px" height="50px"/></a>
+	<div id="logout"><a href="/app/logout"><img src="/app/resources/img/logout-icon.png" width="50px" height="50px"/></a>
 	</div>
 </div>
 

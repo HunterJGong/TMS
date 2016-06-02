@@ -6,14 +6,14 @@
 		history:
 			<c:forEach items="${ breadCrumbs }" var="crumb">
 				<a href="${crumb }">
-				<c:if test="${crumb.contains('/TMS/')}">
-					<c:set var= "urlTrimed" value="${ crumb.replace('/TMS/','')}"></c:set>
+				<c:if test="${crumb.contains('/app/')}">
+					<c:set var= "urlTrimed" value="${ crumb.replace('/app/','')}"></c:set>
 				</c:if>
-				<c:if test="${crumb.contains('/TMS/developer/')}">
-					<c:set var= "urlTrimed" value="${ crumb.replace('/TMS/developer/','')}"></c:set>
+				<c:if test="${crumb.contains('/app/developer/')}">
+					<c:set var= "urlTrimed" value="${ crumb.replace('/app/developer/','')}"></c:set>
 				</c:if>
-				<c:if test="${crumb.contains('/TMS/manager/')}">
-					<c:set var= "urlTrimed" value="${ crumb.replace('/TMS/manager/','')}"></c:set>
+				<c:if test="${crumb.contains('/app/manager/')}">
+					<c:set var= "urlTrimed" value="${ crumb.replace('/app/manager/','')}"></c:set>
 				</c:if>
 				
 					<c:out value="${urlTrimed}/"></c:out></a>
