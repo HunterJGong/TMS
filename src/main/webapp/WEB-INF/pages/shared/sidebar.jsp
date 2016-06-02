@@ -3,9 +3,9 @@
 	<img src="${user.image}" id="editUser" class="btn-sidebar"/>
 	<br/>
 	<c:if test="${user.role.id==2}">
-		<img src="/resources/img/plus-empty.png" id="newUser" class="btn-sidebar">
+		<img src="${pageContext.request.contextPath}/resources/img/plus-empty.png" id="newUser" class="btn-sidebar">
 	</c:if>
-	<div id="logout"><a href="/logout"><img src="/resources/img/logout-icon.png" width="50px" height="50px"/></a>
+	<div id="logout"><a href="${pageContext.request.contextPath}/logout"><img src="${pageContext.request.contextPath}/resources/img/logout-icon.png" width="50px" height="50px"/></a>
 	</div>
 </div>
 

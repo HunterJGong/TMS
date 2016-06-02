@@ -3,6 +3,8 @@ package com.tms.aspect;
 import java.util.ArrayList;
 import java.util.List;
 
+import javax.annotation.PostConstruct;
+import javax.servlet.ServletContext;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
@@ -16,7 +18,16 @@ import org.springframework.stereotype.Component;
 @Component
 public class BreadCrumbAspect {
 
-	//private static List<String> breadCrumbs;
+	@Autowired
+	private ServletContext servletContext;
+	private static String ctx;
+	
+	@PostConstruct
+	private void setCtx(){
+		ctx = servletContext.getContextPath();	
+	}
+	
+	
 	@Autowired(required=true)
 	private HttpServletRequest request;
 	
@@ -26,9 +37,9 @@ public class BreadCrumbAspect {
 		List<String> newBreadCrumbs = new ArrayList<>();
 		String theRequest = request.getServletPath();
 		if(theRequest.contains("developer")){
-			newBreadCrumbs.add("/TMS/developer");
+			newBreadCrumbs.add(ctx+"/developer");
 		}else if (theRequest.contains("manager")){
-			newBreadCrumbs.add("/TMS/manager");
+			newBreadCrumbs.add(ctx+"/manager");
 		}
 		
 		session.setAttribute("breadCrumbs",newBreadCrumbs);
@@ -40,19 +51,19 @@ public class BreadCrumbAspect {
 		System.out.println("Aspect Controller");
 		System.out.println(request.getServletPath());
 		HttpSession session = request.getSession();
-		List<String> oldBreadCrumbs = (List<String>) session.getAttribute("breadCrumbs");
+		//List<String> oldBreadCrumbs = (List<String>) session.getAttribute("breadCrumbs");
 		List<String> newBreadCrumbs = new ArrayList<>();
 		String theRequest = request.getServletPath();
 		
 		
 		if(theRequest.contains("developer")){
-			newBreadCrumbs.add("/TMS/developer");
-			newBreadCrumbs.add("/TMS/developer/project");
+			newBreadCrumbs.add(ctx+"/developer");
+			newBreadCrumbs.add(ctx+"/developer/project");
 			session.setAttribute("breadCrumbs", newBreadCrumbs);
 			return;
 		}else if (theRequest.contains("manager")){
-			newBreadCrumbs.add("/TMS/manager");
-			newBreadCrumbs.add("/TMS/manager/project");
+			newBreadCrumbs.add(ctx+"/manager");
+			newBreadCrumbs.add(ctx+"/manager/project");
 			session.setAttribute("breadCrumbs", newBreadCrumbs);
 			return;
 		}
@@ -65,21 +76,21 @@ public class BreadCrumbAspect {
 		System.out.println(request.getServletPath());
 		
 		HttpSession session = request.getSession();
-		List<String> oldBreadCrumbs = (List<String>) session.getAttribute("breadCrumbs");
+		//List<String> oldBreadCrumbs = (List<String>) session.getAttribute("breadCrumbs");
 		List<String> newBreadCrumbs = new ArrayList<>();
 		String theRequest = request.getServletPath();
 		
 		
 		if(theRequest.contains("developer")){
-			newBreadCrumbs.add("/TMS/developer");
-			newBreadCrumbs.add("/TMS/developer/project");
-			newBreadCrumbs.add("/TMS/developer/sprint");
+			newBreadCrumbs.add(ctx+"/developer");
+			newBreadCrumbs.add(ctx+"/developer/project");
+			newBreadCrumbs.add(ctx+"/developer/sprint");
 			session.setAttribute("breadCrumbs", newBreadCrumbs);
 			return;
 		}else if (theRequest.contains("manager")){
-			newBreadCrumbs.add("/TMS/manager");
-			newBreadCrumbs.add("/TMS/manager/project");
-			newBreadCrumbs.add("/TMS/manager/sprint");
+			newBreadCrumbs.add(ctx+"/manager");
+			newBreadCrumbs.add(ctx+"/manager/project");
+			newBreadCrumbs.add(ctx+"/manager/sprint");
 			session.setAttribute("breadCrumbs", newBreadCrumbs);
 			return;
 		}
@@ -92,23 +103,23 @@ public class BreadCrumbAspect {
 		System.out.println(request.getServletPath());
 		
 		HttpSession session = request.getSession();
-		List<String> oldBreadCrumbs = (List<String>) session.getAttribute("breadCrumbs");
+		//List<String> oldBreadCrumbs = (List<String>) session.getAttribute("breadCrumbs");
 		List<String> newBreadCrumbs = new ArrayList<>();
 		String theRequest = request.getServletPath();
 		
 		
 		if(theRequest.contains("developer")){
-			newBreadCrumbs.add("/TMS/developer");
-			newBreadCrumbs.add("/TMS/developer/project");
-			newBreadCrumbs.add("/TMS/developer/sprint");
-			newBreadCrumbs.add("/TMS/developer/story");
+			newBreadCrumbs.add(ctx+"/developer");
+			newBreadCrumbs.add(ctx+"/developer/project");
+			newBreadCrumbs.add(ctx+"/developer/sprint");
+			newBreadCrumbs.add(ctx+"/developer/story");
 			session.setAttribute("breadCrumbs", newBreadCrumbs);
 			return;
 		}else if (theRequest.contains("manager")){
-			newBreadCrumbs.add("/TMS/manager");
-			newBreadCrumbs.add("/TMS/manager/project");
-			newBreadCrumbs.add("/TMS/manager/sprint");
-			newBreadCrumbs.add("/TMS/manager/story");
+			newBreadCrumbs.add(ctx+"/manager");
+			newBreadCrumbs.add(ctx+"/manager/project");
+			newBreadCrumbs.add(ctx+"/manager/sprint");
+			newBreadCrumbs.add(ctx+"/manager/story");
 			session.setAttribute("breadCrumbs", newBreadCrumbs);
 			return;
 		}

@@ -5,8 +5,8 @@
 <html>
 <head>
 	<link href='https://fonts.googleapis.com/css?family=Alegreya+Sans+SC:400,300,100' rel='stylesheet' type='text/css'>
-	<link rel="stylesheet" href="resources/css/bootstrap.min.css"/>
-	<link rel="stylesheet" href="resources/css/public.css"/>
+	<link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/bootstrap.min.css"/>
+	<link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/public.css"/>
 	<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
 	<title>Scrum TMS Login</title>
 </head>
@@ -33,7 +33,7 @@
 		    <br/>
 		    <input type="submit" class="btn btn-default" value="Login"/>
 		</form:form>
-		<h2><a href="rest/apis">REST API DOCUMENTATION</a></h2>
+		<h2><a href="${pageContext.request.contextPath}/rest/apis">REST API DOCUMENTATION</a></h2>
 	</div>
   
   

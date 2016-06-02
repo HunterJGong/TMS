@@ -9,13 +9,13 @@
 <c:choose>
 	<c:when test="${!story.status.isDone()}">
 		Incomplete
-		<form action="manager/story/complete" method="GET">
+		<form action="${pageContext.request.contextPath}/manager/story/complete" method="GET">
 			<input type="hidden" name="id" value="${story.id}"/>
 			<input class="btn btn-default" type="submit" value="Mark Story Complete"/>
 		</form>
 		<hr/>
 		<div class="task-box">
-			<form action="manager/story/createTask" method="POST">
+			<form action="${pageContext.request.contextPath}/manager/story/createTask" method="POST">
 				<label>Submit a New Task</label>
 				<br/>
 				<span class="err-msg">${task_message}</span>

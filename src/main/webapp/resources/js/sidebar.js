@@ -17,7 +17,7 @@ $(document).ready(function(){
 		var uid = document.getElementById("sidebar").getAttribute("data-uid");
 		$.ajax({// Get user data to populate forms
 			  type: "GET",
-			  url: "/ajax/profile?id="+uid,
+			  url: ctx+"/ajax/profile?id="+uid,
 			  success: success
 			});
 		function success(response){
@@ -37,19 +37,17 @@ $(document).ready(function(){
 		var data = JSON.stringify(request);
 		$.ajax({
 			  type: "PUT",
-			  url: "/ajax/"+event.url,
+			  url: ctx+"/ajax/"+event.url,
 			  data: data,
 			  success: success,
 			  error: error
 			});
 		function success(response){
 			responseParsed = JSON.parse(response);
-			//console.log(responseParsed);
 			displayMessages(responseParsed);
 		}
 		function error(response){
 			responseParsed = JSON.parse(response);
-			//console.log(responseParsed);
 			displayMessages(responseParsed.messages);
 		}
 	});

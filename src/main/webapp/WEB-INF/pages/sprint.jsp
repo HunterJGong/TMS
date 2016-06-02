@@ -11,7 +11,7 @@
 
 <c:if test="${user.role.id==2}">
 	<div class="task-box">
-		<form action="manager/sprint/createStory" method="POST">
+		<form action="${pageContext.request.contextPath}/manager/sprint/createStory" method="POST">
 			<label>Submit a New Story</label>
 			<c:forEach items="${errors}" var="error">
 				<br/><span class="err-msg">${error}</span>
