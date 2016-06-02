@@ -17,7 +17,7 @@ $(document).ready(function(){
 		var uid = document.getElementById("sidebar").getAttribute("data-uid");
 		$.ajax({// Get user data to populate forms
 			  type: "GET",
-			  url: "/app/ajax/profile?id="+uid,
+			  url: "/ajax/profile?id="+uid,
 			  success: success
 			});
 		function success(response){
@@ -37,7 +37,7 @@ $(document).ready(function(){
 		var data = JSON.stringify(request);
 		$.ajax({
 			  type: "PUT",
-			  url: "/app/ajax/"+event.url,
+			  url: "/ajax/"+event.url,
 			  data: data,
 			  success: success,
 			  error: error
