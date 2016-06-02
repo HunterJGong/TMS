@@ -1,3 +1,1 @@
-The OpenShift `jbossews` cartridge documentation can be found at:
-
-http://openshift.github.io/documentation/oo_cartridge_guide.html#tomcat
+The Team Management System (TMS) is an open sourced project originally created by Steven Kelsey, Hunter Gong, and Justin Paine to help development teams organize their tasks in an Agile Scrum manner.
