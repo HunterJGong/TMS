@@ -3,7 +3,7 @@ function nav(location, id, role){
 	if(role!=1){
 		role_type = "manager"
 	}
-	window.location.replace("/TMS/"+role_type+"/"+location+"?id="+id);
+	window.location.replace("/"+role_type+"/"+location+"?id="+id);
 }
 
 function updateTask(tid, e){
@@ -17,7 +17,7 @@ function updateTask(tid, e){
  	var msgId = "#msg"+tid;
 	$.ajax({
 		  type: "PUT",
-		  url: "/TMS/story/updateTask",
+		  url: "/story/updateTask",
 		  data: JSON.stringify(obj),
 		  success: success,
 		  error: error
@@ -45,7 +45,7 @@ function doneTask(tid, e){
  	var msgId = "#msg"+tid;
 	$.ajax({
 		  type: "PUT",
-		  url: "/TMS/story/updateTask",
+		  url: "/story/updateTask",
 		  data: JSON.stringify(obj),
 		  success: success,
 		  error: error
@@ -66,7 +66,7 @@ function grab(tid){
 	obj.task = tid;
 	$.ajax({
 		  type: "PUT",
-		  url: "/TMS/story/grabTask",
+		  url: "/story/grabTask",
 		  data: JSON.stringify(obj),
 		  success: success,
 		  error: error
@@ -101,7 +101,7 @@ $(document).ready(function(){
 	$("#lanes").click(function(){
 		$.ajax({
 			type:"GET",
-			url:"/TMS/sprint/laneData",
+			url:"/sprint/laneData",
 			success: success
 		});
 		function success(e){
@@ -144,7 +144,7 @@ $(document).ready(function(){
 	$("#burndown").click(function(){
 		$.ajax({	
 			  type: "GET",
-			  url: "/TMS/sprint/burnData",
+			  url: "/sprint/burnData",
 			  success: success
 			});
 		function success(e){

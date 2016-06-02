@@ -41,7 +41,7 @@
 					<prop key="hibernate.format_sql">false</prop>
 					
 					<!-- dont use this forreals -->
-					<prop key="hibernate.hbm2ddl.auto">create</prop>
+<!-- 					<prop key="hibernate.hbm2ddl.auto">create</prop> -->
 				</props>
 		</property>
     </bean>  
