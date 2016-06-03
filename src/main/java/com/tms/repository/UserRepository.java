@@ -13,12 +13,11 @@ import com.tms.domain.User;
 public interface UserRepository extends JpaRepository<User, Integer>{
 	
 	public User getUserById(Integer id);
-	public List<User> findAll();
+	
 	public User getUserByUsername(String username);
+	
 	public List<User> getUsersByProject(Project id);
+	
 	public List<User> getUsersByRole(Role role);
-
-	@SuppressWarnings("unchecked")
-	public User save(User user);
 
 }

@@ -89,8 +89,7 @@ public class AjaxController {
 			if(temp_user.getId() == current_user.getId()){
 				User response = new User();
 				if(temp_user.validate()){
-					//User old_user = userService.getUserById(temp_user.getId());
-					User old_user = userService.getUserByUsername(temp_user.getUsername());
+					User old_user = userService.getUserById(temp_user.getId());
 					old_user.setUsername(temp_user.getUsername());
 					old_user.setPassword(temp_user.getPassword());
 					old_user.setEmail(temp_user.getEmail());
